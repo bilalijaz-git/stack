@@ -1,0 +1,99 @@
+#include<iostream>
+#define max 5
+using namespace std;
+int top=-1;
+int arr[max];
+
+int full(){
+    if(top==max-1)
+    return 1;
+    else
+    return 0;
+}
+int empty(){
+    if(top==-1)
+    return 1;
+    else
+    return 0;
+}
+
+void push(int n){
+    if(full())
+    {
+        cout<<"\nstack is full";
+    }
+    else
+    {
+        top+=1;
+        arr[top]=n;
+    }
+}
+int pop(){
+    int value;
+    if(empty())
+    {
+        cout<<"\nStack is empty";
+    } 
+    else{
+        value=arr[top];
+        top--;
+        return value;
+    }
+}
+void print(){
+    for(int i=top;i>=0;i--)
+    cout<<arr[i]<<" ";
+}
+int peak(){
+    if(empty())
+    {
+    cout<<"stack over flow ";
+     exit(1);
+    }
+    else
+    {
+    return arr[top];
+}
+}
+int main(){
+    int choice,data;
+    while (1){
+        cout<<"\n1-Push";
+        cout<<"\n2-Pop";
+        cout<<"\n3-check whether stack is full";
+        cout<<"\n4-print all element of stack";
+        cout<<"\n5-print top element of stack";
+        cout<<"\n6-exist";
+        
+        cout<<"\nEnter your choice:";
+        cin>>choice;
+        switch (choice)
+        {
+        case 1:
+            cout<<"Enter Element to be pushed:";
+            cin>>data;
+            push(data);
+            break;
+        case 2:
+            data=pop();
+            cout<<"Deleted element is "<<data;
+            break;
+        case 3:
+            cout<<full();
+            break;
+        case 4:
+         print();
+            break;
+        case 5:
+        cout<<"top most element is:\t"<<peak();
+            break;
+        case 6:
+        exit(1);
+        default:
+        cout<<"wrong choice";
+            break;
+        }
+
+}
+    return 0;   
+}
